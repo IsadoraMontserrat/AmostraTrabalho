@@ -1,259 +1,26 @@
-Deuses gregos (Trabalho)
+#Deuses gregos (Trabalho)
 
 import pandas as pd
 import numpy as np
 
--> Lê e mostra toda a base de dados
+#Lê e mostra toda a base de dados
 base = pd.read_csv('greek_gods.csv')
 base
 
-->Tamanho da base de dados
+#Tamanho da base de dados
 base.shape
-(445, 5)
 
--> Selecionar uma quantidade específica para a amostra
+#Selecionar uma quantidade específica para a amostra
 np.random.seed(1604)
 amostra = np.random.choice(a = [0,1], size = 445, replace=True, p = [0.75,0.25])
 print(len(amostra))
 print(len(amostra[amostra==0]))
 print(len(amostra[amostra==1]))
-445
-335
-110
 
--> Mostra todos os elementos que foram selecionados para a amostra final, juntamente com todos os dados
-amostra_final = base.loc[amostra==1]
+#Mostra todos os elementos que foram selecionados para a amostra final, juntamente com todos os dados amostra_final = base.loc[amostra==1]
 print(amostra_final.shape)
 pd.set_option("display.max_rows", None, "display.max_columns", None)
 print(amostra_final)
-(110, 5)
-     name-english     name-greek        main-type         sub-type  \
-0       Aphrodite       Ἀφροδίτη              god         olympian   
-3         Artemis        Ἄρτεμις              god         olympian   
-9            Hera            Ἥρα              god         olympian   
-19        Chronos         Χρόνος              god       primordial   
-24         Hypnos          Ὕπνος              god       primordial   
-33       Thanatos        Θάνατος              god       primordial   
-36          Crius         Κρεῖος            titan     twelve titan   
-37         Cronus         Κρόνος            titan     twelve titan   
-38       Hyperion        Ὑπερίων            titan     twelve titan   
-41        Oceanus        Ὠκεανός            titan     twelve titan   
-42         Phoebe          Φοίβη            titan     twelve titan   
-43           Rhea            Ῥέα            titan     twelve titan   
-51         Helios          Ἥλιος            titan      other titan   
-60         Perses         Πέρσης            titan      other titan   
-61     Prometheus      Προμηθεύς            titan      other titan   
-66   Agathodaemon    Ἀγαθοδαίμων  personification  personification   
-67           Agon           Ἀγών  personification  personification   
-71        Alastor        Ἀλάστωρ  personification  personification   
-76           Alke           Ἀλκή  personification  personification   
-83       Apheleia        Ἀφέλεια  personification  personification   
-84       The Arae           Ἀραί  personification  personification   
-85          Arete          Ἀρετή  personification  personification   
-90         Deimos         Δεῖμος  personification  personification   
-91     Dikaiosyne     Δικαιοσύνη  personification  personification   
-100      Epiphron        Ἐπίφρων  personification  personification   
-102       Anteros        Ἀντέρως  personification  personification   
-108       Eupheme         Εὐφήμη  personification  personification   
-111      Euthenia        Εὐθενία  personification  personification   
-123          Ioke           Ἰωκή  personification  personification   
-129         Lethe           Λήθη  personification  personification   
-136      Lachesis        Λάχεσις  personification  personification   
-140    The Neikea       τὰ Νείκη  personification  personification   
-144   The Oneiroi        Ὄνειροι  personification  personification   
-151         Pheme           Φήμη  personification  personification   
-154        Phobos          Φόβος  personification  personification   
-156        Phrike          Φρίκη  personification  personification   
-163     Praxidike      Πραξιδίκη  personification  personification   
-165     Prophasis       Πρόφασις  personification  personification   
-174       Angelos        Ἄγγελος              god         chthonic   
-177        Erebos         Ἔρεβος              god         chthonic   
-183         Minos          Μίνως              god         chthonic   
-184  Rhadamanthys     Ῥαδάμανθυς              god         chthonic   
-187        Orphne          Ορφνη              god            nymph   
-188       Macaria        Μακαρία              god         chthonic   
-190      Menoetes       Μενοίτης              god         chthonic   
-204     Leucothea       Λευκοθέα              god              sea   
-207        Galene         Γαλήνη              god            nymph   
-212         Idyia          Ίδυια              god            nymph   
-216       Proteus        Πρωτεύς              god              sea   
-223         Damon          Δαμων              god              sea   
-224      Dexithea        Δεξιθέα              god              sea   
-226      Lysagora       Λυσαγόρα              god              sea   
-230         Nikon          Νίκων              god              sea   
-231       Ormenos        Ορμενος              god              sea   
-233       Skelmis        Σκελμις              god              sea   
-236       Triteia        Τριτεια              god              sea   
-238     Tritones        Τρίτωνες              god              sea   
-241     Aparctias      Απαρκτίας              god              sky   
-244        Boreas         Βορέας              god              sky   
-246       Circios        Κίρκιος              god              sky   
-251       Skeiron        Σκείρων              god              sky   
-253          Arke           Άρκη              god              sky   
-254      Astraios       Ἀστραῖος              god              sky   
-255       Stilbon        Στιλβών              god              sky   
-257      Hesperus        Ἓσπερος              god              sky   
-261         Aurai  Αὖραι', 'Αὖρα              god            nymph   
-262          Aura           Αὖρα              god              sky   
-263        Chione          Χιόνη              god              sky   
-269        Pandia         Πανδία              god              sky   
-272       Celaeno        Κελαινώ              god              sky   
-274          Maia           Μαία              god              sky   
-275        Merope         Μερώπη              god              sky   
-279         Aetna          Αἴτνη              god           rustic   
-283         Attis          Άττις              god           rustic   
-289        Tonnes         Τόννης              god           rustic   
-293        Cybele         Κυβέλη              god           rustic   
-309      Maenades       Μαινάδες              god            nymph   
-314        Minthe          Μίνθη              god            nymph   
-315      Hekaerge        Εκαέργη              god            nymph   
-316          Loxo           Λοξώ              god            nymph   
-326        Asopus         Ασωπός              god           rustic   
-327       Cladeus        Κλάδεος              god           rustic   
-329         Nilus         Νείλος              god           rustic   
-336        Aphaea          Αφαία              god      agriculture   
-338      Despoina       Δέσποινη              god      agriculture   
-345         Aceso          Ἀκεσώ              god           health   
-352   Telesphorus     Τελεσφόρος              god           health   
-356      Morpheus          μορφή              god            sleep   
-366      Pasithea        Πασιθέα              god            other   
-370      Euthymia        Ευθυμία              god            other   
-372        Paidia         Παιδία              god            other   
-374     Pannychis       Παννυχίς              god            other   
-376       Chrysus         Χρύσος              god            other   
-378     Syntribos      Σύντριβος              god            other   
-379      Smaragos       Σμάραγος              god            other   
-380       Asbetos        Ασβετος              god            other   
-386          Enyo           Ἐνυώ              god            other   
-392       Eunomia        Ευνομία              god            hours   
-400          Auge           Αυγή              god            hours   
-409         Dysis          Δύσις              god            hours   
-412        Theros          Θέρος              god            hours   
-417          Iynx           Ιύνξ              god            other   
-420         Arche           Αρχή              god            other   
-422         Mneme          Μνήμη              god            other   
-424      Calliope       Καλλιόπη              god            other   
-430   Terpsichore      Τερψιχόρη              god            other   
-432      Cephisso        Κεφισσώ              god             muse   
-438   Polymatheia     Πολυμάθεια              god             muse   
-442      Anicetus       Ανικητος              god            other   
-443       Auxesia        Αυξησία              god            other   
 
-                                           description  
-0        goddess of beauty, love, desire, and pleasure  
-3    virgin goddess of the hunt, wilderness, animal...  
-9    queen of the gods, and goddess of marriage, wo...  
-19    god of empirical time, sometimes equated with...  
-24                                        god of sleep  
-33                                        god of death  
-36    least individualized of the twelve titans, he...  
-37   titan of harvests and personification of destr...  
-38                                      titan of light  
-41   titan of the all-encircling river oceans aroun...  
-42   titaness of the bright intellect and prophecy,...  
-43   titaness of fertility, motherhood and the moun...  
-51              titan of the sun and guardian of oaths  
-60                                titan of destruction  
-61   titan of forethought and crafty counsel, and c...  
-66            spirit  of the vineyards and grainfields  
-67   spirit of contest, who possessed an altar at o...  
-71                 spirit of blood feuds and vengeance  
-76   spirit of prowess and courage (one of the machai)  
-83                                spirit of simplicity  
-84                                   spirits of curses  
-85   spirit of virtue, excellence, goodness, and va...  
-90                   spirit of fear, dread, and terror  
-91                 spirit of justice and righteousness  
-100  spirit of prudence, shrewdness, thoughtfulness...  
-102                               god of requited love  
-108  spirit of words of good omen, acclamation, pra...  
-111        spirit of prosperity, abundance, and plenty  
-123                        spirit of pursuit in battle  
-129  spirit of forgetfulness and oblivion, and of t...  
-136        measurer of the life thread (fates; μοίραι)  
-140          spirits of quarrels, feuds and grievances  
-144                                             dreams  
-151               spirit of rumour, report, and gossip  
-154  spirit of panic fear, flight, and battlefield ...  
-156                spirit of horror and trembling fear  
-163                         spirit of exacting justice  
-165                        spirit of excuses and pleas  
-174   daughter of zeus and hera who became an under...  
-177   primeval god of darkness, his mists encircled...  
-183  former mortal king of crete and judge of the f...  
-184  former mortal lawmaker and judge of the men of...  
-187  lampad nymph of hades, mother of askalaphos (l...  
-188     goddess of blessed death and daughter of Hades  
-190   underworld spirit who herded the cattle of hades  
-204          sea goddess who aided sailors in distress  
-207                 sea nymph and goddess of calm seas  
-212  sea nymph and wife of the colchian king aeetes...  
-216   shape-shifting, prophetic old sea god, and th...  
-223  sea spirit native to the island of rhodes (tel...  
-224  sea spirit native to the island of rhodes (tel...  
-226  sea spirit native to the island of rhodes (tel...  
-230  sea spirit native to the island of rhodes (tel...  
-231  sea spirit native to the island of rhodes (tel...  
-233  sea spirit native to the island of rhodes (tel...  
-236           daughter of triton and companion of ares  
-238           fish-tailed spirits in poseidons retinue  
-241   another name for the north wind (anemoi, άνεμοι)  
-244  god of the north wind and of winter (anemoi, ά...  
-246   god of the north-northwest wind (anemoi, άνεμοι)  
-251         god of the northwest wind (anemoi, άνεμοι)  
-253    messenger of the titans and twin sister of iris  
-254  titan god of stars and planets, and the art of...  
-255                 god of hermaon, the planet mercury  
-257                      god of venus the evening star  
-261  nymphs of the cooling breeze, goddess of the b...  
-262  goddess of the breeze and the fresh, cool air ...  
-263             goddess of snow and daughter of boreas  
-269  personification of the moon, daughter of selen...  
-272  goddess of the star cluster pleiades and were ...  
-274  goddess of the star cluster pleiades and were ...  
-275  goddess of the star cluster pleiades and were ...  
-279       goddess of the volcanic mount etna in sicily  
-283               vegetation god and consort of cybele  
-289  god presiding over the mysteries of the island...  
-293                          phrygian mountain goddess  
-309  crazed nymphs in the retinue of dionysus, nymp...  
-314               fresh water nymph (naiades; ναιάδες)  
-315  nymph representing the aspect of archery dista...  
-316  nymph representing the aspect of archery traje...  
-326                       river god (potamoi; ποταμοί)  
-327                       river god (potamoi; ποταμοί)  
-329                       river god (potamoi; ποταμοί)  
-336         minor goddess of agriculture and fertility  
-338  daughter of poseidon and demeter, goddess of m...  
-345  goddess of the healing of wounds and the curin...  
-352  demi-god of convalescence, who brought to fulf...  
-356                                    god of dreaming  
-366  goddess of rest and relaxation (charites; χάρι...  
-370           goddess of good mood (charites; χάριτες)  
-372           goddess of amusement (charites; χάριτες)  
-374  goddess of all-night festivities (charites; χά...  
-376                                     spirit of gold  
-378  spirit which shatters pottery (daemones cerami...  
-379  spirit which smashes pottery (daemones ceramic...  
-380  spirit which chars pottery (daemones ceramici;...  
-386                         goddess of destructive war  
-392  spirit of good order, and springtime goddess o...  
-400                         first light of the morning  
-409                                             sunset  
-412                                             summer  
-417                          goddess of the love charm  
-420                                    muse of origins  
-422                                     muse of memory  
-424                                muse of epic poetry  
-430                    muse of dance and choral poetry  
-432                                 daughter of Apollo  
-438                                  muse of knowledge  
-442  son of heracles presiding over the defence of ...  
-443                            local fertility goddess  
-
--> Mostra apenas a categoria de cada amostra final
+#Mostra apenas a categoria de cada amostra final
 amostra_final['main-type'].value_counts()
-god                78
-personification    23
-titan               9
-Name: main-type, dtype: int64
